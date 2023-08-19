@@ -8,13 +8,13 @@ export default function TodoCard({avat,title,catgory,price,handalDelete,handalTo
     const [tog,setDara]=useState("Not Done")
     function handalToggle(){
         let toggle="Not Done"
-       if(toggle=="Not Done"){
+       if(tog=="Not Done"){
         setDara("Done")
-        toggle="Done"
+        //toggle="Done"
        }
-       else{
+       else if (tog==="Done"){
          setDara("Not Done")
-         toggle="Not Done"
+        // toggle="Not Done"
        }
     }
 
