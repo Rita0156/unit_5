@@ -1,7 +1,7 @@
 import axios from "axios"
 
-function getTodo(){
-    axios.get("https://fakestoreapi.com/products")
+export default function getTodo(){
+    return axios.get("https://fakestoreapi.com/products")
 }
 function postTodo(){
 

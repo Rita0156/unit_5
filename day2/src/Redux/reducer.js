@@ -4,7 +4,7 @@ const intioal={
     isError:false
 }
 const reducer=(oldState=intioal,action)=>{
-    const [type,payload]=action
+    //const [type,p]=action
     switch(action.type){
      
     case data.Get_Todos_Req : return {

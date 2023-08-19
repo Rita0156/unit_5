@@ -1,20 +1,46 @@
 //import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 import TodoCard from './compo/TodoCard';
+import getTodo from "./Redux/action"
+   
+ 
 
 function App() {
+
+  const [data,setData]=useState([])
+  const getData=()=>{
+    getTodo()
+    .then((res)=>{
+     console.log(res);
+     setData(res.data)
+    })
+   
+   }
+
+   useEffect(()=>{
+     getData()
+   },[])
   return (
-    <div className="App">
+    <div className="App" style={{
+      display:"grid",
+      width:"90%",
+      margin:"auto",
+      gridTemplateColumns:"repeat(3,1fr)",
+      gap:"20px"
+    }}>
        
        
-       <div style={{width:"90%",margin:"auto",backgroundColor:"black"}}>
-            <h1>Title</h1>
-            <h1>Category</h1>
-            <h1>Price</h1>
-            <h1>Toggle</h1>
-            <h1>Delete</h1>
-        </div>
-        <TodoCard/>
+       
+        {data.map((item)=>(
+          <TodoCard 
+          key={item.id}
+          avat={item.image}
+          title={item.title}
+          price={item.price}
+          
+          />
+        ))}
       
     </div>
   );
