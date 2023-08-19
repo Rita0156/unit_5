@@ -4,6 +4,7 @@ import { useState } from "react"
 export default function TodoCard({avat,title,catgory,price,handalDelete,handalToggle}){
     //box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
    // const [toggle,setTog]=useState(true)
+   // work is not complete
     const [tog,setDara]=useState("Not Done")
     function handalToggle(){
         let toggle="Not Done"
