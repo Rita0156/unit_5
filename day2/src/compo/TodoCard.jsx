@@ -7,8 +7,8 @@ export default function TodoCard({avat,title,catgory,price,handalDelete,handalTo
    // work is not complete
     const [tog,setDara]=useState("Not Done")
     function handalToggle(){
-        let toggle="Not Done"
-       if(tog=="Not Done"){
+        //let toggle="Not Done"
+       if(tog==="Not Done"){
         setDara("Done")
         //toggle="Done"
        }
@@ -26,17 +26,17 @@ export default function TodoCard({avat,title,catgory,price,handalDelete,handalTo
             flexDirection:"column",
             margin:"auto"
         }}>
-            <img style={{width:"300px",height:"300px"}} src={avat}/>
+            <img style={{width:"300px",height:"300px"}} src={avat} alt=""/>
             <h2>{title}</h2>
             <p>{catgory}</p>
             <h2> ${price}</h2>
             <div style={{
                 display:"flex",
                 width:"80%",
-                justifyContent:"space-between"
+                margin:"auto"
             }} >
-            <button style={{backgroundColor:"white",color:"black",border:"3px solid black", fontWeight:"bold", fontSize:"18px"}} onClick={handalToggle}>{tog}</button>
-            <button style={{backgroundColor:"red",color:"white",border:"3px solid black", fontWeight:"bold", fontSize:"18px"}} onClick={handalDelete}>Delete</button>
+            <button style={{backgroundColor:"teal",color:"white",border:"none", fontWeight:"bold", fontSize:"18px", borderRadius:"6px",marginRight:"10px"}} onClick={handalToggle}>{tog}</button>
+            <button style={{backgroundColor:"red",color:"white",border:"none", fontWeight:"bold", fontSize:"18px",borderRadius:"6px"}} onClick={handalDelete}>Delete</button>
             </div>
         </div>
     )
