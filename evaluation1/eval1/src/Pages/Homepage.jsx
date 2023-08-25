@@ -7,15 +7,15 @@ import {shallowEqual, useDispatch, useSelector} from "react-redux"
 
 const Homepage = () => {
   const dispatch = useDispatch()
-  const data=useSelector((store)=>{
+  const alldata=useSelector((store)=>{
     
      return store.profileData
   },shallowEqual
     
 )
-console.log(data)
+//console.log(alldata)
 
- const dataStore=()=>{
+ function dataStore(){
   dispatch(getRequest())
   return axios.get("http://localhost:8080/profile")
    .then((res)=>{
@@ -49,8 +49,8 @@ console.log(data)
         <tbody data-cy="profile-wrapper">
           {/* Map through the profileData received from the json-server on mounting the component to show it in a table format */}
           {
-            data.length>0 && data.map((item)=>(
-              <ProfileDataRow profile={item}
+            alldata.length > 0 && alldata.map((profile)=>(
+              <ProfileDataRow profile={profile}
               />
             ))
           }
