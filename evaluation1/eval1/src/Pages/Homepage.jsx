@@ -17,13 +17,17 @@ const Homepage = () => {
 
  function dataStore(){
   dispatch(getRequest())
-  return axios.get("http://localhost:8080/profile")
-   .then((res)=>{
-    console.log(res)
-    dispatch(getSuccess(res))
-   })
-   .catch(()=>{
-        dispatch(getFailure())
+  fetch(`http://localhost:8080/profile`)
+  .then((res)=>{
+    return res.json()
+  })
+  .then((d)=>{
+    console.log(d)
+    dispatch(getSuccess(d))
+  })
+   .catch((e)=>{
+    console.log(e)
+        dispatch(getFailure(e))
    })
  }
 
@@ -34,7 +38,7 @@ const Homepage = () => {
 
   return (
     <div>
-      <table>
+      <table border="2px solid black" style={{margin:"auto", border:'2px solid black'}}>
         <thead style={{ fontWeight: "700" }}>
           <tr>
             <th>ID</th>

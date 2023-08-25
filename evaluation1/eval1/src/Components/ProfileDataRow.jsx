@@ -3,12 +3,12 @@ import React from "react";
 const ProfileDataRow = ({ profile}) => {
   // DO NOT DELETE the data-cy attributes. Removing them may result in less evaluation marks
   //console.log(profile)
-  console.log(profile)
+  //console.log(profile)
 
   return (
     <tr data-cy={`profile-wrapper-${profile.id}`}>
       <td data-cy="profile-id">{profile.id}</td>
-      <td data-cy="profile-image">{profile.profile_pic}</td>
+      <td data-cy="profile-image"><img src={profile.profile_pic}/></td>
       <td data-cy="profile-first-name">{profile.first_name}</td>
       <td data-cy="profile-last-name">{profile.last_name}</td>
       <td data-cy="profile-email">{profile.email}</td>
