@@ -17,13 +17,10 @@ const Homepage = () => {
 
  function dataStore(){
   dispatch(getRequest())
-  fetch(`http://localhost:8080/profile`)
-  .then((res)=>{
-    return res.json()
-  })
+  return axios.get(`http://localhost:8080/profile`)
   .then((d)=>{
     console.log(d)
-    dispatch(getSuccess(d))
+      dispatch(getSuccess(d.data))
   })
    .catch((e)=>{
     console.log(e)
@@ -38,7 +35,7 @@ const Homepage = () => {
 
   return (
     <div>
-      <table border="2px solid black" style={{margin:"auto", border:'2px solid black'}}>
+      <table border="2px solid black" style={{margin:'auto'}} >
         <thead style={{ fontWeight: "700" }}>
           <tr>
             <th>ID</th>
