@@ -5,7 +5,7 @@
    function SingleMusicRecord(){
      return (
         <div>
-
+            single
         </div>
      )
    }

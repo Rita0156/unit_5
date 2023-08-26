@@ -3,11 +3,12 @@ import MusicRecords from "./MusicRecord"
 import Login from "./Login"
 import EditMusicRecord from "./EditMusicRec"
 import SingleMusicRecord from "./SingleMusicRec"
+import HomePage from "./HomePage"
 
 function MusicRoutes(){
     return (
        <Routes>
-                <Route path="/" element={<MusicRecords />} />
+                <Route path="/" element={<HomePage />} />
                 <Route path="/music/:id" element={<SingleMusicRecord />} />
                 <Route path="/music/:id/edit" element={<EditMusicRecord />} />
                 <Route path="/login" element={<Login />} />
