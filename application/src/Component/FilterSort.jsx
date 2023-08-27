@@ -8,10 +8,13 @@ function FilterSort(){
      const initialGenreParams =searchParam.getAll("genre")
      const [category,setCategory]=useState
      (initialGenreParams || []);
+     
+     const initialSortParams =searchParam.get("sortBy")
+     const [sortBy,setSortBy]=useState(initialSortParams || "")
 
     function handleGenre(e){
        const option = e.target.value;
-       let newCategory=[...option]
+       let newCategory=[...category]
        if(category.includes(option)){
           newCategory.splice(newCategory.indexOf(option),1)
        }
@@ -21,11 +24,18 @@ function FilterSort(){
        setCategory(newCategory)
     }
 
+    function nandleSortBy(e){
+      setSortBy(e.target.value)
+    }
+
     useEffect(()=>{
-        if(category){
-           setSearchparam({genre:category})
+        if(category || sortBy){
+           setSearchparam({genre:category,
+           sortBy:sortBy 
+         })
+           
         }
-    },[category,setSearchparam])
+    },[category,setSearchparam,sortBy])
 
     return (
         <div style={{border:"2px solid black"}}>
@@ -51,7 +61,19 @@ function FilterSort(){
                <input type="checkbox" value="Heavy Metal" onChange={handleGenre} defaultChecked={category.includes('Heavy Metal')}/>
                <label>Heavy Metal</label>
             </div>
+
+            <h1>Sort</h1>
+            <div onChange={nandleSortBy}>
+            <div>
+              <input type="radio" name="sortBy" value="asc" defaultChecked={sortBy==="asc"} />
+              <label>Ascending</label>
+            </div>
+            <div>
+              <input type="radio" name="sortBy" value="desc" defaultChecked={sortBy==="desc"} />
+              <label>Descending</label>
+            </div>
             
+            </div>
 
         </div>
     )

@@ -9,23 +9,30 @@ function HomePage(){
     const data=useSelector((store)=>store.musicRecords)
     const dispatch=useDispatch();
     const [searchParam] = useSearchParams();
-    const [location]=useLocation();
+    const location=useLocation();
+    
+
    useEffect(()=>{
-       if(location ||data.length==0){
+    const sortBy=searchParam.get("sortBy")
+       if(location || data.length===0){
         
         const quaryParam={
-            genre:searchParam.getAll("genre")
+            params:{
+            genre:searchParam.getAll("genre"),
+            _sort:sortBy && "year",
+            _order:sortBy
+            }
         }
 
         dispatch(getDataMusic(quaryParam))
        }
-   },[location.search,searchParam])
+   },[location.search])
 
     return (
         <div style={{display:"flex", width:"98%", margin:'auto'}}>
              <FilterSort style={{width:"20%",margin:"auto"}}/>
              <div style={{width:"80%",margin:"auto",display:"grid", gridTemplateColumns:"repeat(2,1fr)",gap:"20px",boxShadow:"rgba(0, 0, 0, 0.24) 0px 3px 8px", padding:"2rem"}}>
-             {data.length>0 && data.map((item)=>(
+             {data.map((item)=>(
                 <MusicRecords key={item.id} 
                 avt={item.img} 
                 nameE={item.name}
