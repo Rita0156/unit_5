@@ -4,7 +4,7 @@ import styled from "styled-components"
 import {getDataMusic} from "../Redux/action"
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useLocation, useParams, useSearchParams } from "react-router-dom"
+import { Link, useLocation, useParams, useSearchParams } from "react-router-dom"
 function HomePage(){
     const data=useSelector((store)=>store.musicRecords)
     const dispatch=useDispatch();
@@ -33,12 +33,14 @@ function HomePage(){
              <FilterSort style={{width:"20%",margin:"auto"}}/>
              <div style={{width:"80%",margin:"auto",display:"grid", gridTemplateColumns:"repeat(2,1fr)",gap:"20px",boxShadow:"rgba(0, 0, 0, 0.24) 0px 3px 8px", padding:"2rem"}}>
              {data.map((item)=>(
-                <MusicRecords key={item.id} 
-                avt={item.img} 
-                nameE={item.name}
-                year={item.year}
-                genre={item.genre}
-                />
+                <Link to={`/music/${item.id}`}>
+                       <MusicRecords key={item.id} 
+                          avt={item.img} 
+                          nameE={item.name}
+                          year={item.year}
+                          genre={item.genre}
+                        />
+                </Link>
              ))}
              </div>
         </div>
