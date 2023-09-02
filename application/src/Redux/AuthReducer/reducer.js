@@ -32,3 +32,4 @@ const reducer=(oldState=initData,action)=>{
         return oldState
     }
 }
+export {reducer}

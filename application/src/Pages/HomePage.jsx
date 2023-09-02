@@ -1,12 +1,12 @@
 import FilterSort from "../Component/FilterSort"
 import MusicRecords from "./MusicRecord"
 import styled from "styled-components"
-import {getDataMusic} from "../Redux/action"
+import {getDataMusic} from "../Redux/AppReducer/action"
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useLocation, useParams, useSearchParams } from "react-router-dom"
 function HomePage(){
-    const data=useSelector((store)=>store.musicRecords)
+    const data=useSelector((store)=>store.AppReducer.musicRecords)
     const dispatch=useDispatch();
     const [searchParam] = useSearchParams();
     const location=useLocation();
